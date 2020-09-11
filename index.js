@@ -5,7 +5,8 @@ const fs = require('fs')
 const qs = require('querystring')
 
 // Import paytm checksum utility
-var PaytmChecksum = require('./config/cheksum')
+const PaytmChecksum = require('./config/cheksum')
+const PaytmConfig = require('./config/config')
 
 const server = http.createServer()
 
@@ -40,8 +41,8 @@ server.on('request', (req, res) => {
 
                 paytmParams.body = {
                     "requestType": "Payment",
-                    "mid": "RNBThT66781644549811",
-                    "websiteName": "WEBSTAGING",
+                    "mid": PaytmConfig.PaytmConfig.mid,
+                    "websiteName": PaytmConfig.PaytmConfig.website,
                     "orderId": orderId,
                     "callbackUrl": "http://localhost:3000/callback",
                     "txnAmount": {
@@ -53,7 +54,7 @@ server.on('request', (req, res) => {
                     },
                 };
 
-                PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "KMuJZEFXyL62x3Ou").then(function (checksum) {
+                PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), PaytmConfig.PaytmConfig.key).then(function (checksum) {
 
                     paytmParams.head = {
                         "signature": checksum
@@ -70,7 +71,7 @@ server.on('request', (req, res) => {
                         // hostname: 'securegw.paytm.in',
 
                         port: 443,
-                        path: `/theia/api/v1/initiateTransaction?mid=RNBThT66781644549811&orderId=${orderId}`,
+                        path: `/theia/api/v1/initiateTransaction?mid=${PaytmConfig.PaytmConfig.mid}&orderId=${orderId}`,
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -97,10 +98,10 @@ server.on('request', (req, res) => {
                                     <center>
                                         <h1>Please do not refresh this page...</h1>
                                     </center>
-                                    <form method="post" action="https://securegw-stage.paytm.in/theia/api/v1/showPaymentPage?mid=RNBThT66781644549811&orderId=${orderId}" name="paytm">
+                                    <form method="post" action="https://securegw-stage.paytm.in/theia/api/v1/showPaymentPage?mid=${PaytmConfig.PaytmConfig.mid}&orderId=${orderId}" name="paytm">
                                         <table border="1">
                                             <tbody>
-                                                <input type="hidden" name="mid" value="RNBThT66781644549811">
+                                                <input type="hidden" name="mid" value="${PaytmConfig.PaytmConfig.mid}">
                                                     <input type="hidden" name="orderId" value="${orderId}">
                                                     <input type="hidden" name="txnToken" value="${response.body.txnToken}">
                                          </tbody>
@@ -135,18 +136,18 @@ server.on('request', (req, res) => {
 
                 const paytmChecksum = data.CHECKSUMHASH
 
-                var isVerifySignature = PaytmChecksum.verifySignature(data, "KMuJZEFXyL62x3Ou", paytmChecksum)
+                var isVerifySignature = PaytmChecksum.verifySignature(data, PaytmConfig.PaytmConfig.key, paytmChecksum)
                 if (isVerifySignature) {
                     console.log("Checksum Matched");
 
                     var paytmParams = {};
 
                     paytmParams.body = {
-                        "mid": "RNBThT66781644549811",
+                        "mid": PaytmConfig.PaytmConfig.mid,
                         "orderId": data.ORDERID,
                     };
 
-                    PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "KMuJZEFXyL62x3Ou").then(function (checksum) {
+                    PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), PaytmConfig.PaytmConfig.key).then(function (checksum) {
                         paytmParams.head = {
                             "signature": checksum
                         };
