@@ -21,3 +21,6 @@ In `config.js` update the credentials with your test API keys.
 ## Testing Credentials
 
 For testing credentials, visit <https://developer.paytm.com/docs/testing-integration>
+
+## License
+The MIT License (MIT). Please see [License File](https://github.com/amljs/paytm-nodejs-updated/blob/master/LICENSE) for more information.
