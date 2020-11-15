@@ -4,7 +4,7 @@ This is a Paytm payment gateway demo app using Node.js.
 
 Check out the [Medium tutorial](https://medium.com/@amljs/integrating-paytm-payment-gateway-using-node-js-f05b0a266801) to know how it's implemented.
 
-For the Demo App, <https://paytm-nodejs-sample-app.herokuapp.com>
+For the Demo App, <https://paytm-nodejs-demo.herokuapp.com>
 
 ## Usage
 
