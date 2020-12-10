@@ -1,6 +1,6 @@
 # Paytm-Node.js Integration
 
-This is a Paytm payment gateway demo app using Node.js.
+Paytm payment gateway demo app built using Node.js.
 
 Check out the [Medium tutorial](https://medium.com/@amljs/integrating-paytm-payment-gateway-using-node-js-f05b0a266801) to know how it's implemented.
 
