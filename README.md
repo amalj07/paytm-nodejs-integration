@@ -2,13 +2,13 @@
 
 Paytm payment gateway demo app built using Node.js.
 
-Check out the [Medium tutorial](https://medium.com/@amljs/integrating-paytm-payment-gateway-using-node-js-f05b0a266801) to know how it's implemented.
+Check out the [Medium tutorial](https://medium.com/@amalj07/integrating-paytm-payment-gateway-using-node-js-f05b0a266801) to know how it's implemented.
 
 For the Demo App, <https://paytm-nodejs-demo.herokuapp.com>
 
 ## Usage
 
-`git clone https://github.com/amljs/paytm-nodejs-updated.git`
+`git clone https://github.com/amalj07/paytm-nodejs-updated.git`
 
 `cd paytm-node.js-updated`
 
@@ -23,4 +23,4 @@ In `config.js` update the credentials with your test API keys.
 For testing credentials, visit <https://developer.paytm.com/docs/testing-integration>
 
 ## License
-The MIT License (MIT). Please see [License File](https://github.com/amljs/paytm-nodejs-updated/blob/master/LICENSE) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/amalj07/paytm-nodejs-updated/blob/master/LICENSE) for more information.
