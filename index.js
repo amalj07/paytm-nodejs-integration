@@ -39,6 +39,8 @@ server.on('request', (req, res) => {
 
                 const paytmParams = {}
 
+                //The values are coming from config file 
+
                 paytmParams.body = {
                     "requestType": "Payment",
                     "mid": PaytmConfig.PaytmConfig.mid,
